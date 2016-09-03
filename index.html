@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <title>My Angular App!</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-app="durandal" ng-controller="MainCtrl">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        
+        <div class="page-header">
+          <h1>Durandal</h1>
+        </div>
+        
+        <div ng-repeat="tournament in tournaments">
+          <span style="font-size:20px; margin-left:10px;">
+            {{tournament.title}} - weapon: {{tournament.weapon}}
+          </span>
+        </div>
+        
+        <form ng-submit="addTournament()" style="margin-top:30px;">
+          <h3>Add a new tournament</h3>
+          
+          <div class="form-group">
+              <input type="text" 
+                 class="form-control"
+                 placeholder="Title"
+                 ng-model="title"></input>
+          </div>
+          
+          <br>
+          
+          <div class="form-group">
+              <input type="text" 
+                 class="form-control"
+                 placeholder="Weapon"
+                 ng-model="weapon"></input>
+          </div>
+          
+          <br>
+          
+          <button type="submit"
+                  class="btn btn-primary">
+              New Tournament
+          </button>
+        </form>
+        
+      </div>
+    </div>
+    
+  </body>
+</html>
