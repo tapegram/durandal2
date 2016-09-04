@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   root to: 'application#angular'
   
+  resources :tournaments, only: [:create, :index, :show] do
+    resources :fencers, only: [:show, :create] do
+    end
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

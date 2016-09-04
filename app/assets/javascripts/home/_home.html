@@ -7,7 +7,7 @@
             {{tournament.name}} - weapon: {{tournament.weapon}}
         </span>
     <span>
-            <a href="#/tournaments/{{$index}}">Fencers</a>
+            <a href="#/tournaments/{{tournament.id}}">Fencers</a>
         </span>
 </div>
 
@@ -15,7 +15,7 @@
     <h3>Add a new tournament</h3>
 
     <div class="form-group">
-        <input type="text" class="form-control" placeholder="Title" ng-model="title"></input>
+        <input type="text" class="form-control" placeholder="Tournament Name" ng-model="name"></input>
     </div>
 
     <br>

@@ -10,13 +10,23 @@ function($stateProvider, $urlRouterProvider) {
     .state('home', {
       url: '/home',
       templateUrl: 'home/_home.html',
-      controller: 'MainCtrl'
+      controller: 'MainCtrl',
+      resolve: {
+        postPromise: ['tournaments', function(tournaments){
+          return tournaments.getAll();
+        }]
+      }
     })
 
     .state('tournaments', {
       url: '/tournaments/{id}',
       templateUrl: 'tournaments/_tournaments.html',
-      controller: 'TournamentsCtrl'
+      controller: 'TournamentsCtrl',
+      resolve: {
+        tournament: ['$stateParams', 'tournaments', function($stateParams, tournaments) {
+          return tournaments.get($stateParams.id);
+        }]
+      }
     });
 
   $urlRouterProvider.otherwise('home');

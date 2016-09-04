@@ -5,34 +5,24 @@ angular.module('durandal')
 '$scope',
 'tournaments',
 function($scope, tournaments){
-  $scope.test = 'Hello world';
+  $scope.name = '';
   
   $scope.tournaments = tournaments.tournaments;
   
   $scope.addTournament = function() {
-    // Quit if the title or weapon field is blank.
-    if(!$scope.title || $scope.title === '' ||
+    // Quit if the name or weapon field is blank.
+    if(!$scope.name || $scope.name === '' ||
        !$scope.weapon || $scope.weapon === '') { 
            return;
     }
     
-    $scope.tournaments.push({
-        title: $scope.title,
+    tournaments.create({
+        name: $scope.name,
         weapon: $scope.weapon,
-        fencers: [
-            {firstname: "Joe",
-             lastname: "Smith",
-             rating: "A",
-             rating_year: 2016},
-            {firstname: "Bill",
-             lastname: "Danko",
-             rating: "B",
-             rating_year: 2014}
-            ]
-    });  
+    })
     
     // Clear form fields.
-    $scope.title = '';
+    $scope.name = '';
     $scope.weapon = '';
   };
 }]);
