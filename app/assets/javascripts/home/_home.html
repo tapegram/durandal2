@@ -1,0 +1,32 @@
+<div class="page-header">
+    <h1>Durandal</h1>
+</div>
+
+<div ng-repeat="tournament in tournaments">
+    <span style="font-size:20px; margin-left:10px;">
+            {{tournament.name}} - weapon: {{tournament.weapon}}
+        </span>
+    <span>
+            <a href="#/tournaments/{{$index}}">Fencers</a>
+        </span>
+</div>
+
+<form ng-submit="addTournament()" style="margin-top:30px;">
+    <h3>Add a new tournament</h3>
+
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Title" ng-model="title"></input>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Weapon" ng-model="weapon"></input>
+    </div>
+
+    <br>
+
+    <button type="submit" class="btn btn-primary">
+          New Tournament
+      </button>
+</form>
