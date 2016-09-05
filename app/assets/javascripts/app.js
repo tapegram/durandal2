@@ -27,6 +27,17 @@ function($stateProvider, $urlRouterProvider) {
           return tournaments.get($stateParams.id);
         }]
       }
+    })
+    
+    .state('pools', {
+      url: '/tournaments/{id}/pools',
+      templateUrl: 'pools/_pools.html',
+      controller: 'PoolsCtrl',
+      resolve: {
+        tournament: ['$stateParams', 'tournaments', function($stateParams, tournaments) {
+          return tournaments.get($stateParams.id);
+        }]
+      }
     });
 
   $urlRouterProvider.otherwise('home');
