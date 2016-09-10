@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resources :tournaments, only: [:create, :index, :show] do
     resources :fencers, only: [:show, :create] do
     end
+    
+    resources :pools, only: [:show, :create, :destroy] do
+    end
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

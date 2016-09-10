@@ -36,7 +36,7 @@ function($stateProvider, $urlRouterProvider) {
       resolve: {
         tournament: ['$stateParams', 'tournaments', function($stateParams, tournaments) {
           return tournaments.get($stateParams.id);
-        }]
+        }],
       }
     });
 

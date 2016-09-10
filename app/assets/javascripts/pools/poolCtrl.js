@@ -16,4 +16,10 @@ function($scope, tournament, pools){
     $scope.pools = pools.getPools(tournament.fencers, $scope.poolSize);
     
     $scope.fencersInPool = function(pool) { return pool.length; };
+    
+    $scope.tournamentReferees = ["John Ref", "Billy Ref", "Fred Ref"];
+    
+    $scope.savePools = function(){
+        pools.savePools(tournament.id, $scope.pools);
+    };
 }]);

@@ -1,30 +1,38 @@
-<div class="page-header">
+<div class="container">
+  <div class="jumbotron">
+    <h1>Configure pools</h1> 
+    <p>Generate and assign refs to pools. When ready, start the pools to send out assignments.</p> 
+    <button type="button" class="btn btn-primary">Start Pools</button>
+    <button type="button" class="btn btn-primary" ng-click="savePools()">Save Pools</button>
+  </div>
+  
+  <div class="page-header">
     <h1>Pools</h1>
+    </div>
+    
+    <div class="form-group">
+      <label for="selPoolSize">Fencers in pool:</label>
+      <select class="form-control" id="selPoolSize" ng-model="poolSize" ng-change="getPools()" ng-options="x for x in poolSizes">
+      </select>
+    </div>
+      
+    <div ng-repeat="pool in pools">
+        <p>Pool {{$index}}</p>
+        <label for="selRefAssignment">Referee:</label>
+        <select class="form-control" id="selRefAssignment" ng-model="pool.referee" ng-options="x for x in tournamentReferees"></select>
+      
+        <table>
+            <tr ng-repeat="fencer in pool">
+                <td>{{fencer.lastname}}, {{fencer.firstname}}</td>
+                <td ng-repeat="fencer in pool">X</td>
+            </tr>
+        </table>
+        <br>
+    </div>
+    
+    
+
 </div>
 
-<div class="form-group">
-  <label for="selPoolSize">Fencers in pool:</label>
-  <select class="form-control" id="selPoolSize" ng-model="poolSize" ng-change="getPools()" ng-options="x for x in poolSizes">
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
-    <option>6</option>
-    <option>7</option>
-    <option>8</option>
-    <option>9</option>
-  </select>
-</div>
-  
-<div ng-repeat="pool in pools">
-    <p>Pool {{$index}}</p>
-    <table>
-        <tr ng-repeat="fencer in pool">
-            <td>{{fencer.lastname}}, {{fencer.firstname}}</td>
-            <td ng-repeat="fencer in pool">X</td>
-        </tr>
-    </table>
-    
-</div>
 
 

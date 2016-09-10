@@ -34,5 +34,9 @@ function($http){
         return o.pools;
   };
   
+  o.savePools = function(id, p) {
+    return $http.post('/tournaments/' + id + '/pools.json', {"pools": p});
+  };
+  
   return o;
 }]);

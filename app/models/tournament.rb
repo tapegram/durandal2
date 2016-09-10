@@ -3,6 +3,6 @@ class Tournament < ActiveRecord::Base
     has_many :pools
     
     def as_json(options = {})
-        super(options.merge(include: :fencers))
+        super(options.merge(include: [:fencers, :pools]))
     end
 end
