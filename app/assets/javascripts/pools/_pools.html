@@ -2,8 +2,8 @@
   <div class="jumbotron">
     <h1>Configure pools</h1> 
     <p>Generate and assign refs to pools. When ready, start the pools to send out assignments.</p> 
-    <button type="button" class="btn btn-primary">Start Pools</button>
-    <button type="button" class="btn btn-primary" ng-click="savePools()">Save Pools</button>
+    <button type="button" class="btn btn-danger" ng-show="inProcess" ng-click="stopPools()">Reconfigure Pools</button>
+    <button type="button" class="btn btn-primary" ng-click="savePools()" ng-hide="inProcess">Start Pools</button>
   </div>
   
   <div class="page-header">
@@ -12,14 +12,14 @@
     
     <div class="form-group">
       <label for="selPoolSize">Fencers in pool:</label>
-      <select class="form-control" id="selPoolSize" ng-model="poolSize" ng-change="getPools()" ng-options="x for x in poolSizes">
+      <select class="form-control" id="selPoolSize" ng-model="poolSize" ng-change="getPools()" ng-options="x for x in poolSizes" ng-disabled="inProcess">
       </select>
     </div>
       
     <div ng-repeat="pool in pools">
         <p>Pool {{$index}}</p>
         <label for="selRefAssignment">Referee:</label>
-        <select class="form-control" id="selRefAssignment" ng-model="pool.referee" ng-options="x for x in tournamentReferees"></select>
+        <select class="form-control" id="selRefAssignment" ng-model="pool.referee" ng-options="x for x in tournamentReferees" ng-disabled="inProcess"></select>
       
         <table>
             <tr ng-repeat="fencer in pool">

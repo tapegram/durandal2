@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     end
     
     resources :pools, only: [:show, :create, :destroy] do
+      collection do
+        get 'show_pools'
+      end
     end
   end
   # Example of regular route:

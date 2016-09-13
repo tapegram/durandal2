@@ -17,8 +17,26 @@ class PoolsController < ApplicationController
       # add pool to tournament
       tournament.pools << new_pool
     end
+    
+    # set tournament as in_process.
+    tournament.in_process = true
+    tournament.save
      
      respond_with tournament
+  end
+  
+  def show_pools
+    # return an array of pools. Each pool is an array with fencer objects.
+    
+    tournament = Tournament.find(params[:tournament_id])
+    pools = tournament.pools
+    fencerLists = []
+    
+    pools.each do |p|
+      fencerLists << p.fencers.to_a
+    end 
+    
+    respond_with fencerLists
   end
   
   private

@@ -37,6 +37,9 @@ function($stateProvider, $urlRouterProvider) {
         tournament: ['$stateParams', 'tournaments', function($stateParams, tournaments) {
           return tournaments.get($stateParams.id);
         }],
+        poolPromise: ['$stateParams', 'pools', function($stateParams, pools){
+          return pools.getExistingPools($stateParams.id);
+        }]
       }
     });
 

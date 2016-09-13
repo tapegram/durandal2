@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905182050) do
+ActiveRecord::Schema.define(version: 20160911174346) do
 
   create_table "fencers", force: :cascade do |t|
     t.string   "firstname"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160905182050) do
     t.string   "weapon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "in_process"
   end
 
 end

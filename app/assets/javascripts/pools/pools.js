@@ -10,6 +10,12 @@ function($http){
     poolSizes: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   };
   
+  o.getExistingPools = function(id) {
+    return $http.get('/tournaments/' + id + '/pools/show_pools.json').success(function(data){
+      angular.copy(data, o.pools);
+    });
+  };
+  
   o.getPools = function(fencers, targetPoolSize){
         // Sort fencers by rating. Todo: also sort by rating year.
         fencers.sort(function(a, b) { 
